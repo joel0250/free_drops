@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import heroBottleImg from "@/public/images/hero-bottle.png";
 import { Droplet, ArrowRight, Activity, Menu, Scan, Gift, Zap } from "lucide-react";
 
 export default function HomeClient() {
@@ -64,7 +65,7 @@ export default function HomeClient() {
             </div>
             <div className="flex-1 relative min-h-[300px] md:min-h-full w-full">
                <Image 
-                 src="/images/hero-bottle.png"
+                 src={heroBottleImg}
                  alt="Free Drops Premium Aluminum Bottle"
                  fill
                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"

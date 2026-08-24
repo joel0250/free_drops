@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ShoppingCart, Leaf, Mail, Flame, CheckCircle } from "lucide-react";
 import Image from "next/image";
+import collabBottleImg from "@/public/images/collab-bottle.png";
 import {
   Dialog,
   DialogContent,
@@ -96,7 +97,7 @@ export default function BrandClient({ brandId }: BrandProps) {
           </div>
           <div className="flex-1 relative min-h-[300px] w-full">
             <Image 
-              src="/images/collab-bottle.png"
+              src={collabBottleImg}
               alt={`${brand.name} Collaboration Bottle`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"

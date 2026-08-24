@@ -6,6 +6,8 @@ import { Slider } from "@/components/ui/slider";
 import { Droplet, BarChart3, Users, DollarSign, Menu } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import scanningImg from "@/public/images/scanning.png";
+import dashboardImg from "@/public/images/dashboard.png";
 import { Button } from "@/components/ui/button";
 
 export default function BusinessClient() {
@@ -61,7 +63,7 @@ export default function BusinessClient() {
           className="relative w-full h-[400px] md:h-[600px] rounded-3xl overflow-hidden mb-20 border border-zinc-800"
         >
           <Image 
-            src="/images/scanning.png"
+            src={scanningImg}
             alt="Person scanning a Free Drops bottle"
             fill
             className="object-cover"
@@ -200,7 +202,7 @@ export default function BusinessClient() {
                  className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl shadow-primary/10 group"
               >
                  <Image 
-                   src="/images/dashboard.png"
+                   src={dashboardImg}
                    alt="Free Drops Analytics Dashboard"
                    fill
                    className="object-cover transition-transform duration-700 group-hover:scale-105"
