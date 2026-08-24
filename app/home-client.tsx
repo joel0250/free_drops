@@ -47,23 +47,23 @@ export default function HomeClient() {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
           }}
-          className="bento-grid"
+          className="grid grid-cols-12 gap-4 md:gap-6"
         >
           {/* Main Headline & Image */}
-          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="bento-item col-span-12 md:col-span-8 min-h-[50vh] flex flex-col md:flex-row overflow-hidden p-0 bg-zinc-900/50 border-zinc-800 backdrop-blur-xl relative group">
-            <div className="flex-1 p-6 md:p-10 flex flex-col justify-center z-10 relative">
-              <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-bold leading-[0.85] tracking-tighter uppercase text-white drop-shadow-lg">
+          <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="col-span-12 lg:col-span-8 min-h-[50vh] flex flex-col md:flex-row rounded-3xl border border-white/10 bg-black/40 backdrop-blur-xl overflow-hidden relative group">
+            <div className="flex-1 p-8 md:p-12 flex flex-col justify-center z-10 relative">
+              <h1 className="text-6xl md:text-8xl lg:text-[8.5rem] font-bold leading-[0.9] tracking-tighter uppercase text-white drop-shadow-2xl">
                 Water
                 <br />
                 Should
                 <br />
-                <span className="text-primary glow-text">Be Free.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 glow-text">Be Free.</span>
               </h1>
-              <p className="mt-8 text-lg md:text-xl font-medium tracking-tight text-zinc-300 max-w-md leading-relaxed">
+              <p className="mt-8 text-lg md:text-xl font-medium tracking-tight text-zinc-400 max-w-md leading-relaxed">
                 A disruptive model where brands pay for your hydration. Scan the drop, unlock exclusive offers, stay hydrated. It&apos;s that simple.
               </p>
             </div>
-            <div className="flex-1 relative min-h-[300px] md:min-h-full w-full">
+            <div className="flex-1 relative min-h-[350px] md:min-h-full w-full">
                <Image 
                  src={heroBottleImg}
                  alt="Free Drops Premium Aluminum Bottle"
@@ -71,13 +71,13 @@ export default function HomeClient() {
                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
                  priority
                />
-               <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-zinc-900/90 via-zinc-900/40 to-transparent pointer-events-none" />
+               <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-zinc-950 via-zinc-950/60 to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
           {/* Live Impact Counter */}
-          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="bento-item col-span-12 md:col-span-4 flex flex-col justify-between bg-primary text-primary-foreground p-6 md:p-8 relative overflow-hidden group">
-            <div className="flex items-center gap-2 font-mono text-sm tracking-widest uppercase mb-4 relative z-10">
+          <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="col-span-12 lg:col-span-4 flex flex-col justify-between rounded-3xl border border-primary/30 bg-primary/10 text-primary p-8 md:p-10 relative overflow-hidden group backdrop-blur-xl shadow-[0_0_40px_rgba(0,240,255,0.1)]">
+            <div className="flex items-center gap-2 font-mono text-sm tracking-widest uppercase mb-4 relative z-10 text-primary/90">
               <Activity className="h-4 w-4 animate-pulse" />
               Live Global Impact
             </div>
@@ -86,34 +86,34 @@ export default function HomeClient() {
                 key={impactCount}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-5xl lg:text-7xl font-bold tracking-tighter tabular-nums"
+                className="text-5xl lg:text-7xl font-bold tracking-tighter tabular-nums text-white drop-shadow-[0_0_15px_rgba(0,240,255,0.4)]"
               >
                 {impactCount.toLocaleString()}
               </motion.div>
-              <div className="text-sm font-medium tracking-tight mt-2 uppercase opacity-90">
+              <div className="text-sm font-medium tracking-tight mt-2 uppercase opacity-90 text-primary/80">
                 Plastic Bottles Prevented
               </div>
             </div>
-            {/* Decorative background glow */}
-            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/20 blur-[100px] rounded-full group-hover:bg-white/30 transition-colors duration-500" />
+            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/20 blur-[100px] rounded-full group-hover:bg-primary/30 transition-colors duration-700" />
           </motion.div>
 
           {/* Manifesto Teaser */}
-          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="bento-item col-span-12 md:col-span-6 min-h-[300px] p-6 md:p-10 bg-zinc-900/40 border-zinc-800 backdrop-blur-md flex flex-col justify-center">
+          <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="col-span-12 md:col-span-6 min-h-[300px] p-8 md:p-12 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-xl flex flex-col justify-center relative overflow-hidden">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase text-white">The Manifesto</h2>
             <p className="text-lg md:text-xl text-zinc-400 leading-relaxed font-medium">
-              We pay for water in plastic bottles that destroy the earth, while advertising interrupts everything we do. We flipped the model. Premium aluminum bottles, pristine water, <strong className="text-white">paid for by brands you actually want to hear from.</strong>
+              We pay for water in plastic bottles that destroy the earth, while advertising interrupts everything we do. We flipped the model. Premium aluminum bottles, pristine water, <strong className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">paid for by brands you actually want to hear from.</strong>
             </p>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[100px] rounded-full pointer-events-none" />
           </motion.div>
 
           {/* Call to Action for Brands */}
-          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="col-span-12 md:col-span-6">
-            <Link href="/business" aria-label="Sponsor a Drop" title="Go to Business Portal" className="bento-item h-full min-h-[300px] p-6 md:p-10 flex flex-col justify-between group cursor-pointer bg-zinc-900/80 border-zinc-700 hover:bg-white hover:text-black transition-all duration-300 block relative overflow-hidden">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 uppercase relative z-10 group-hover:text-black transition-colors">Sponsor a Drop</h2>
+          <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } } }} className="col-span-12 md:col-span-6">
+            <Link href="/business" aria-label="Sponsor a Drop" title="Go to Business Portal" className="h-full min-h-[300px] p-8 md:p-12 flex flex-col justify-between group cursor-pointer rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white hover:border-white transition-all duration-500 block relative overflow-hidden shadow-xl">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 uppercase relative z-10 group-hover:text-black transition-colors text-white">Sponsor a Drop</h2>
               <div className="flex items-center justify-between mt-auto relative z-10">
                 <p className="font-medium text-lg md:text-xl text-zinc-400 group-hover:text-zinc-600 transition-colors">Put your brand directly in their hands.</p>
-                <div className="h-14 w-14 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-black text-primary group-hover:text-white transition-all duration-300">
-                  <ArrowRight className="h-6 w-6 transform group-hover:translate-x-1 transition-transform" />
+                <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-black text-primary group-hover:text-white transition-all duration-500 shrink-0 ml-4">
+                  <ArrowRight className="h-8 w-8 transform group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
               </div>
             </Link>
@@ -136,13 +136,13 @@ export default function HomeClient() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: i * 0.2 }}
-              className="flex flex-col items-center text-center p-8 bg-zinc-900/30 rounded-3xl border border-zinc-800/50 backdrop-blur-sm hover:border-primary/50 transition-colors"
+              className="flex flex-col items-center text-center p-10 bg-black/40 rounded-3xl border border-white/10 backdrop-blur-xl hover:border-primary/50 hover:bg-white/5 transition-all duration-500 group shadow-lg"
             >
-              <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-[0_0_30px_rgba(0,240,255,0.2)]">
+              <div className="h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center mb-8 text-primary shadow-[0_0_30px_rgba(0,240,255,0.15)] group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
                 <step.icon className="h-10 w-10" />
               </div>
-              <h3 className="text-2xl font-bold uppercase tracking-widest mb-4">{step.title}</h3>
-              <p className="text-zinc-400 font-medium text-lg">{step.desc}</p>
+              <h3 className="text-3xl font-bold uppercase tracking-widest mb-4 text-white drop-shadow-sm">{step.title}</h3>
+              <p className="text-zinc-400 font-medium text-lg leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
         </div>
