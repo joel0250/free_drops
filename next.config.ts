@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+
 const nextConfig: NextConfig = {
-  // Standard Next.js config without static export
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  basePath: isGithubActions ? "/free_drops" : "",
 };
 
 export default nextConfig;
