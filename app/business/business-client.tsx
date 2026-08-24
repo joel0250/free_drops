@@ -22,7 +22,7 @@ export default function BusinessClient() {
   const cpa = totalCost / estimatedLeads;
 
   return (
-    <main className="min-h-screen bg-background text-foreground pb-20">
+    <main className="min-h-screen bg-background text-foreground pb-20 overflow-x-hidden">
       {/* Navigation */}
       <nav className="w-full border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
