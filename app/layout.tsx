@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter_Tight, Calistoga } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -8,11 +8,7 @@ const interTight = Inter_Tight({
   subsets: ["latin"],
 });
 
-const calistoga = Calistoga({
-  weight: "400",
-  variable: "--font-calistoga",
-  subsets: ["latin"],
-});
+
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -45,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${interTight.variable} ${calistoga.variable}`}>
+    <html lang="en" className={`dark ${interTight.variable}`}>
       <body
         className="font-sans antialiased bg-background text-foreground"
       >

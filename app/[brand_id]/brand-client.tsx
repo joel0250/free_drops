@@ -63,7 +63,7 @@ export default function BrandClient({ brandId }: BrandProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-12"
       >
-        <h1 className="text-6xl md:text-8xl font-heading font-bold tracking-tighter uppercase mb-4 text-white drop-shadow-lg">
+        <h1 className="text-6xl md:text-8xl font-bold tracking-tighter uppercase mb-4 text-white drop-shadow-lg">
           {brand.name} <span className="text-primary glow-text">x Free Drops</span>
         </h1>
         <p className="text-xl text-zinc-400 font-medium uppercase tracking-widest flex items-center gap-2">
@@ -88,7 +88,7 @@ export default function BrandClient({ brandId }: BrandProps) {
             <div className="inline-block px-4 py-1 bg-red-500/20 text-red-500 font-bold uppercase tracking-widest rounded-full mb-6 text-sm border border-red-500/50 w-max">
               Only 500 Drops Left
             </div>
-            <h2 className="text-5xl md:text-6xl font-heading font-bold uppercase tracking-tighter mb-6 text-white leading-tight drop-shadow-md">
+            <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-6 text-white leading-tight drop-shadow-md">
               {brand.offer}
             </h2>
             <p className="text-lg text-zinc-300 font-medium max-w-lg leading-relaxed">
@@ -113,7 +113,7 @@ export default function BrandClient({ brandId }: BrandProps) {
             Environmental Impact
           </div>
           <div>
-            <p className="text-5xl font-heading font-bold tracking-tighter mb-4 text-white drop-shadow-md">
+            <p className="text-5xl font-bold tracking-tighter mb-4 text-white drop-shadow-md">
               {brand.impact}
             </p>
             <p className="text-sm font-medium text-zinc-400 uppercase tracking-wide">
@@ -124,7 +124,7 @@ export default function BrandClient({ brandId }: BrandProps) {
 
         {/* Direct to Buy */}
         <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.5 } } }} className="bento-item col-span-12 md:col-span-6 flex flex-col justify-between group cursor-pointer bg-zinc-900/40 backdrop-blur-xl border border-zinc-800 hover:bg-white hover:text-black transition-all duration-300 p-8 rounded-3xl">
-          <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-8 group-hover:text-black transition-colors text-white">
+          <h3 className="text-3xl font-bold uppercase tracking-tighter mb-8 group-hover:text-black transition-colors text-white">
             Shop The Brand
           </h3>
           <div className="flex items-center justify-between text-zinc-400 group-hover:text-zinc-600 font-medium">
@@ -140,7 +140,7 @@ export default function BrandClient({ brandId }: BrandProps) {
           <DialogTrigger
             render={
               <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.5 } } }} className="bento-item col-span-12 md:col-span-6 flex flex-col justify-between group cursor-pointer bg-primary/20 backdrop-blur-xl text-primary-foreground border border-primary/50 hover:bg-white hover:border-white hover:text-black transition-all duration-300 p-8 overflow-hidden relative rounded-3xl shadow-[0_0_30px_rgba(0,240,255,0.2)]">
-                <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-8 relative z-10 group-hover:text-black text-white">
+                <h3 className="text-3xl font-bold uppercase tracking-tighter mb-8 relative z-10 group-hover:text-black text-white">
                   Claim Your Drop
                 </h3>
                 <div className="flex items-center justify-between font-medium relative z-10">
@@ -156,7 +156,7 @@ export default function BrandClient({ brandId }: BrandProps) {
           <DialogContent className="sm:max-w-md border-zinc-800/50 bg-zinc-950/80 backdrop-blur-2xl text-white rounded-3xl overflow-hidden p-0 shadow-2xl">
             <div className="p-6 md:p-8 relative">
                 <DialogHeader className="mb-6">
-                  <DialogTitle className="text-3xl font-heading font-bold tracking-tighter uppercase text-white drop-shadow-md">
+                  <DialogTitle className="text-3xl font-bold tracking-tighter uppercase text-white drop-shadow-md">
                     Get The Drop
                   </DialogTitle>
                 </DialogHeader>
@@ -210,7 +210,7 @@ export default function BrandClient({ brandId }: BrandProps) {
                         >
                            <CheckCircle className="h-10 w-10" />
                         </motion.div>
-                        <p className="text-3xl font-heading font-bold text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]">
+                        <p className="text-3xl font-bold text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]">
                         Drop Secured!
                         </p>
                         <p className="text-zinc-400 font-medium text-lg max-w-[250px] mx-auto">

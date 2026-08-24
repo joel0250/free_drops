@@ -99,15 +99,11 @@ export default function HomeClient() {
           </motion.div>
 
           {/* Manifesto Teaser */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, type: "spring", bounce: 0.6, delay: 0.4 }}
-            className="col-span-12 md:col-span-5 bg-zinc-900/40 bento-item p-0 overflow-hidden flex flex-col group relative rounded-3xl"
-          >
-            <div className="p-8 pb-0 z-10 relative">
-              <h2 className="text-3xl font-heading font-bold uppercase tracking-tighter drop-shadow-lg">Paid by brands you actually want to hear from.</h2>
-            </div>
+          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="bento-item col-span-12 md:col-span-6 min-h-[300px] p-6 md:p-10 bg-zinc-900/40 border-zinc-800 backdrop-blur-md flex flex-col justify-center">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase text-white">The Manifesto</h2>
+            <p className="text-lg md:text-xl text-zinc-400 leading-relaxed font-medium">
+              We pay for water in plastic bottles that destroy the earth, while advertising interrupts everything we do. We flipped the model. Premium aluminum bottles, pristine water, <strong className="text-white">paid for by brands you actually want to hear from.</strong>
+            </p>
           </motion.div>
 
           {/* Call to Action for Brands */}
@@ -136,16 +132,16 @@ export default function HomeClient() {
           ].map((step, i) => (
             <motion.div 
               key={step.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.2, type: "spring", bounce: 0.5 }}
-              className="bento-item col-span-12 md:col-span-4 bg-zinc-900/40 rounded-3xl flex flex-col group hover:border-primary/50 transition-colors"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: i * 0.2 }}
+              className="flex flex-col items-center text-center p-8 bg-zinc-900/30 rounded-3xl border border-zinc-800/50 backdrop-blur-sm hover:border-primary/50 transition-colors"
             >
-              <div className="h-14 w-14 rounded-full bg-primary/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(0,240,255,0.3)]">
-                <step.icon className="h-6 w-6" />
+              <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary shadow-[0_0_30px_rgba(0,240,255,0.2)]">
+                <step.icon className="h-10 w-10" />
               </div>
-              <h3 className="text-2xl font-heading font-bold uppercase tracking-tighter mb-4 text-white">{step.title}</h3>
+              <h3 className="text-2xl font-bold uppercase tracking-widest mb-4">{step.title}</h3>
               <p className="text-zinc-400 font-medium text-lg">{step.desc}</p>
             </motion.div>
           ))}

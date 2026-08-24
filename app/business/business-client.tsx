@@ -47,7 +47,7 @@ export default function BusinessClient() {
           transition={{ duration: 0.5 }}
           className="mb-12 md:mb-16 max-w-4xl"
         >
-          <h1 className="text-5xl md:text-7xl font-heading font-bold tracking-tighter uppercase mb-6 leading-[0.9] drop-shadow-xl">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-6 leading-[0.9] drop-shadow-xl">
             Marketing with <span className="text-primary glow-text">Water.</span>
           </h1>
           <p className="text-xl md:text-2xl text-zinc-400 font-medium tracking-tight">
@@ -70,7 +70,7 @@ export default function BusinessClient() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/90 to-transparent" />
           <div className="absolute bottom-10 left-10 max-w-lg">
-             <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase tracking-tighter text-white mb-2 shadow-xl drop-shadow-lg">The Ultimate Billboard</h2>
+             <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-white mb-2 shadow-xl drop-shadow-lg">The Ultimate Billboard</h2>
              <p className="text-lg text-zinc-200 font-medium shadow-xl">100% Viewability. Zero Banner Blindness.</p>
           </div>
         </motion.div>
@@ -83,7 +83,7 @@ export default function BusinessClient() {
             viewport={{ once: true }}
             className="bento-item col-span-12 lg:col-span-8 flex flex-col gap-8 p-6 md:p-10 bg-zinc-900/50 backdrop-blur-md border border-zinc-800"
           >
-            <h2 className="text-3xl font-heading font-bold tracking-tighter uppercase text-white drop-shadow-md">
+            <h2 className="text-3xl font-bold tracking-tighter uppercase text-white drop-shadow-md">
               ROI Calculator
             </h2>
             
@@ -142,7 +142,7 @@ export default function BusinessClient() {
             className="bento-item col-span-12 lg:col-span-4 flex flex-col justify-between p-6 md:p-10 bg-zinc-900/50 backdrop-blur-md border border-zinc-800"
           >
             <div>
-              <h3 className="text-2xl font-heading font-bold tracking-tighter uppercase mb-6 text-white drop-shadow-md">
+              <h3 className="text-2xl font-bold tracking-tighter uppercase mb-6 text-white drop-shadow-md">
                 The Specs
               </h3>
               <ul className="space-y-6 font-medium text-zinc-300">
@@ -185,7 +185,7 @@ export default function BusinessClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl md:text-5xl font-heading font-bold uppercase tracking-tighter mb-6 text-white drop-shadow-xl">Actionable Insights. <br/><span className="text-primary glow-text">Zero Guesswork.</span></h2>
+                <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6 text-white drop-shadow-xl">Actionable Insights. <br/><span className="text-primary glow-text">Zero Guesswork.</span></h2>
                 <p className="text-xl text-zinc-400 font-medium mb-8 leading-relaxed">
                   Track every drop. Our proprietary dashboard gives you real-time visibility into scans, geographic distribution, and post-scan conversion rates. It&apos;s physical marketing with digital attribution.
                 </p>
