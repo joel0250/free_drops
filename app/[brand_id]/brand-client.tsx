@@ -139,7 +139,7 @@ export default function BrandClient({ brandId }: BrandProps) {
         <Dialog>
           <DialogTrigger
             render={
-              <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.5 } } }} className="bento-item col-span-12 md:col-span-6 flex flex-col justify-between group cursor-pointer bg-primary/20 backdrop-blur-xl text-primary-foreground border border-primary/50 hover:bg-white hover:border-white hover:text-black transition-all duration-300 p-8 overflow-hidden relative rounded-3xl shadow-[0_0_30px_rgba(220,38,38,0.2)]">
+              <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.5 } } }} className="bento-item col-span-12 md:col-span-6 flex flex-col justify-between group cursor-pointer bg-primary/20 backdrop-blur-xl text-primary-foreground border border-primary/50 hover:bg-white hover:border-white hover:text-black transition-all duration-300 p-8 overflow-hidden relative rounded-3xl shadow-[0_0_30px_rgba(0,240,255,0.2)]">
                 <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-8 relative z-10 group-hover:text-black text-white">
                   Claim Your Drop
                 </h3>
@@ -187,7 +187,7 @@ export default function BrandClient({ brandId }: BrandProps) {
                         </div>
                         <Button
                         type="submit"
-                        className="rounded-xl h-14 bg-primary text-primary-foreground hover:bg-white hover:text-black font-bold uppercase tracking-widest relative overflow-hidden group transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)]"
+                        className="rounded-xl h-14 bg-primary text-primary-foreground hover:bg-white hover:text-black font-bold uppercase tracking-widest relative overflow-hidden group transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)]"
                         >
                         <span className="relative z-10 flex items-center gap-2 text-lg">
                             <Mail className="h-5 w-5" /> Unlock Code
@@ -210,7 +210,7 @@ export default function BrandClient({ brandId }: BrandProps) {
                         >
                            <CheckCircle className="h-10 w-10" />
                         </motion.div>
-                        <p className="text-3xl font-heading font-bold text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">
+                        <p className="text-3xl font-heading font-bold text-white uppercase tracking-tighter mb-4 drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]">
                         Drop Secured!
                         </p>
                         <p className="text-zinc-400 font-medium text-lg max-w-[250px] mx-auto">

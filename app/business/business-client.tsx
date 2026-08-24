@@ -125,7 +125,7 @@ export default function BusinessClient() {
                 <div className="text-sm font-mono tracking-widest uppercase mb-1 text-zinc-400">Est. Scans</div>
                 <div className="text-3xl font-bold">{Math.round(estimatedScans).toLocaleString()}</div>
               </motion.div>
-              <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.3, type: "spring", bounce: 0.5 }} viewport={{ once: true }} className="border border-primary/20 rounded-2xl p-6 bg-primary/10 text-primary shadow-[0_0_20px_rgba(220,38,38,0.2)] relative overflow-hidden backdrop-blur-md">
+              <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.3, type: "spring", bounce: 0.5 }} viewport={{ once: true }} className="border border-primary/20 rounded-2xl p-6 bg-primary/10 text-primary shadow-[0_0_20px_rgba(0,240,255,0.2)] relative overflow-hidden backdrop-blur-md">
                 <BarChart3 className="h-6 w-6 mb-4 relative z-10" />
                 <div className="text-sm font-mono tracking-widest uppercase mb-1 opacity-80 relative z-10 text-primary">Est. CPA</div>
                 <div className="text-3xl font-bold relative z-10">${cpa.toFixed(2)}</div>

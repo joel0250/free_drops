@@ -142,7 +142,7 @@ export default function HomeClient() {
               transition={{ delay: i * 0.2, type: "spring", bounce: 0.5 }}
               className="bento-item col-span-12 md:col-span-4 bg-zinc-900/40 rounded-3xl flex flex-col group hover:border-primary/50 transition-colors"
             >
-              <div className="h-14 w-14 rounded-full bg-primary/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(220,38,38,0.3)]">
+              <div className="h-14 w-14 rounded-full bg-primary/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(0,240,255,0.3)]">
                 <step.icon className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-heading font-bold uppercase tracking-tighter mb-4 text-white">{step.title}</h3>
