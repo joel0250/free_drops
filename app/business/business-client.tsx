@@ -47,7 +47,7 @@ export default function BusinessClient() {
           transition={{ duration: 0.5 }}
           className="mb-12 md:mb-16 max-w-4xl"
         >
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]">
+          <h1 className="text-5xl md:text-7xl font-heading font-bold tracking-tighter uppercase mb-6 leading-[0.9] drop-shadow-xl">
             Marketing with <span className="text-primary glow-text">Water.</span>
           </h1>
           <p className="text-xl md:text-2xl text-zinc-400 font-medium tracking-tight">
@@ -70,7 +70,7 @@ export default function BusinessClient() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/90 to-transparent" />
           <div className="absolute bottom-10 left-10 max-w-lg">
-             <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-white mb-2 shadow-xl">The Ultimate Billboard</h2>
+             <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase tracking-tighter text-white mb-2 shadow-xl drop-shadow-lg">The Ultimate Billboard</h2>
              <p className="text-lg text-zinc-200 font-medium shadow-xl">100% Viewability. Zero Banner Blindness.</p>
           </div>
         </motion.div>
@@ -83,7 +83,7 @@ export default function BusinessClient() {
             viewport={{ once: true }}
             className="bento-item col-span-12 lg:col-span-8 flex flex-col gap-8 p-6 md:p-10 bg-zinc-900/50 backdrop-blur-md border border-zinc-800"
           >
-            <h2 className="text-3xl font-bold tracking-tighter uppercase text-white">
+            <h2 className="text-3xl font-heading font-bold tracking-tighter uppercase text-white drop-shadow-md">
               ROI Calculator
             </h2>
             
@@ -115,22 +115,22 @@ export default function BusinessClient() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
-              <div className="border border-zinc-800 rounded-2xl p-6 bg-black text-white hover:border-primary/50 transition-colors">
+              <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.1, type: "spring", bounce: 0.5 }} viewport={{ once: true }} className="border border-zinc-800 rounded-2xl p-6 bg-black/50 text-white hover:border-primary/50 transition-colors backdrop-blur-md">
                 <DollarSign className="h-6 w-6 text-primary mb-4" />
                 <div className="text-sm font-mono tracking-widest uppercase mb-1 text-zinc-400">Total Cost</div>
                 <div className="text-3xl font-bold">${totalCost.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
-              </div>
-              <div className="border border-zinc-800 rounded-2xl p-6 bg-zinc-900 text-white hover:border-primary/50 transition-colors">
+              </motion.div>
+              <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2, type: "spring", bounce: 0.5 }} viewport={{ once: true }} className="border border-zinc-800 rounded-2xl p-6 bg-zinc-900/50 text-white hover:border-primary/50 transition-colors backdrop-blur-md">
                 <Users className="h-6 w-6 text-primary mb-4" />
                 <div className="text-sm font-mono tracking-widest uppercase mb-1 text-zinc-400">Est. Scans</div>
                 <div className="text-3xl font-bold">{Math.round(estimatedScans).toLocaleString()}</div>
-              </div>
-              <div className="border border-primary/20 rounded-2xl p-6 bg-primary/10 text-primary shadow-[0_0_20px_rgba(0,240,255,0.1)] relative overflow-hidden">
+              </motion.div>
+              <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.3, type: "spring", bounce: 0.5 }} viewport={{ once: true }} className="border border-primary/20 rounded-2xl p-6 bg-primary/10 text-primary shadow-[0_0_20px_rgba(220,38,38,0.2)] relative overflow-hidden backdrop-blur-md">
                 <BarChart3 className="h-6 w-6 mb-4 relative z-10" />
                 <div className="text-sm font-mono tracking-widest uppercase mb-1 opacity-80 relative z-10 text-primary">Est. CPA</div>
                 <div className="text-3xl font-bold relative z-10">${cpa.toFixed(2)}</div>
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-3xl rounded-full" />
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -142,7 +142,7 @@ export default function BusinessClient() {
             className="bento-item col-span-12 lg:col-span-4 flex flex-col justify-between p-6 md:p-10 bg-zinc-900/50 backdrop-blur-md border border-zinc-800"
           >
             <div>
-              <h3 className="text-2xl font-bold tracking-tighter uppercase mb-6 text-white">
+              <h3 className="text-2xl font-heading font-bold tracking-tighter uppercase mb-6 text-white drop-shadow-md">
                 The Specs
               </h3>
               <ul className="space-y-6 font-medium text-zinc-300">
@@ -185,7 +185,7 @@ export default function BusinessClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6 text-white">Actionable Insights. <br/><span className="text-primary glow-text">Zero Guesswork.</span></h2>
+                <h2 className="text-4xl md:text-5xl font-heading font-bold uppercase tracking-tighter mb-6 text-white drop-shadow-xl">Actionable Insights. <br/><span className="text-primary glow-text">Zero Guesswork.</span></h2>
                 <p className="text-xl text-zinc-400 font-medium mb-8 leading-relaxed">
                   Track every drop. Our proprietary dashboard gives you real-time visibility into scans, geographic distribution, and post-scan conversion rates. It&apos;s physical marketing with digital attribution.
                 </p>
