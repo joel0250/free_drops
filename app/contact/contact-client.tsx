@@ -113,14 +113,14 @@ export default function ContactClient() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="md:w-1/2 z-10"
         >
-          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter uppercase mb-6 leading-[0.85] text-white">
+          <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-bold tracking-tighter uppercase mb-6 leading-[0.9] text-white drop-shadow-2xl">
             Talk
             <br />
             To
             <br />
-            <span className="text-primary glow-text">Us.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 glow-text">Us.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-zinc-400 font-medium tracking-tight max-w-md">
+          <p className="text-xl md:text-2xl text-zinc-400 font-medium tracking-tight max-w-md leading-relaxed">
             Ready to sponsor a drop? Have a question? We respond instantly. No bots, no generic slop.
           </p>
         </motion.header>
@@ -131,7 +131,7 @@ export default function ContactClient() {
            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
            className="md:w-1/2 w-full z-10"
         >
-          <div className="bento-item p-8 md:p-12 bg-zinc-900/60 backdrop-blur-xl border border-zinc-800 rounded-3xl relative overflow-hidden shadow-2xl">
+          <div className="p-8 md:p-12 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl relative overflow-hidden shadow-2xl">
             <AnimatePresence mode="wait">
               {!submitted ? (
                 <motion.form 
@@ -156,7 +156,7 @@ export default function ContactClient() {
                       value={formData.name}
                       onChange={(e) => handleChange("name", e.target.value)}
                       onBlur={() => handleBlur("name")}
-                      className={`rounded-xl border-zinc-800 bg-zinc-950/50 h-14 uppercase font-mono placeholder:text-zinc-700 focus-visible:ring-primary focus-visible:border-primary text-white px-4 text-lg transition-all ${errors.name ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
+                      className={`rounded-xl border-white/10 bg-white/5 h-14 uppercase font-mono placeholder:text-zinc-600 focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary text-white px-4 text-lg transition-all ${errors.name ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
                       aria-invalid={!!errors.name}
                       aria-describedby={errors.name ? "name-error" : undefined}
                       disabled={isSubmitting}
@@ -176,7 +176,7 @@ export default function ContactClient() {
                       value={formData.email}
                       onChange={(e) => handleChange("email", e.target.value)}
                       onBlur={() => handleBlur("email")}
-                      className={`rounded-xl border-zinc-800 bg-zinc-950/50 h-14 uppercase font-mono placeholder:text-zinc-700 focus-visible:ring-primary focus-visible:border-primary text-white px-4 text-lg transition-all ${errors.email ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
+                      className={`rounded-xl border-white/10 bg-white/5 h-14 uppercase font-mono placeholder:text-zinc-600 focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary text-white px-4 text-lg transition-all ${errors.email ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
                       aria-invalid={!!errors.email}
                       aria-describedby={errors.email ? "email-error" : undefined}
                       disabled={isSubmitting}
@@ -195,7 +195,7 @@ export default function ContactClient() {
                       value={formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
                       onBlur={() => handleBlur("message")}
-                      className={`rounded-xl border border-zinc-800 bg-zinc-950/50 min-h-[120px] uppercase font-mono placeholder:text-zinc-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary text-white px-4 text-lg resize-y pt-4 transition-all ${errors.message ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
+                      className={`rounded-xl border border-white/10 bg-white/5 min-h-[120px] uppercase font-mono placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary text-white px-4 text-lg resize-y pt-4 transition-all ${errors.message ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
                       aria-invalid={!!errors.message}
                       aria-describedby={errors.message ? "message-error" : undefined}
                       disabled={isSubmitting}
@@ -205,7 +205,7 @@ export default function ContactClient() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`mt-2 rounded-xl h-14 bg-primary text-primary-foreground hover:bg-white hover:text-black font-bold uppercase tracking-widest text-lg relative overflow-hidden group cursor-pointer border-none transition-all disabled:opacity-70 disabled:cursor-not-allowed`}
+                    className={`mt-2 rounded-xl h-14 bg-primary text-primary-foreground hover:bg-white hover:text-black font-bold uppercase tracking-widest text-lg relative overflow-hidden group cursor-pointer border-none transition-all duration-500 shadow-[0_0_20px_rgba(0,240,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] disabled:opacity-70 disabled:cursor-not-allowed`}
                   >
                     <span className="relative z-10 flex items-center justify-center gap-3">
                       {isSubmitting ? "Sending..." : "Submit Inquiry"} {!isSubmitting && <Send className="h-5 w-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
