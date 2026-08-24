@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Slider } from "@/components/ui/slider";
-import { Droplet, BarChart3, Users, DollarSign, Menu } from "lucide-react";
+import { Droplet, BarChart3, Users, DollarSign, Menu, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import scanningImg from "@/public/images/scanning.png";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 
 export default function BusinessClient() {
   const [bottles, setBottles] = useState(10000);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Basic ROI math
   const costPerBottle = 0.85; // $0.85 per bottle for brands
@@ -33,11 +34,44 @@ export default function BusinessClient() {
             B2B Platform
             <Link href="/contact" aria-label="Contact Us" title="Contact Us" className="hover:text-primary transition-colors">Contact</Link>
           </div>
-          {/* Mobile Menu Icon */}
-          <div className="md:hidden flex items-center">
-             <Menu className="h-6 w-6 text-foreground" />
-          </div>
+          {/* Mobile Menu Icon Button */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors focus:outline-none"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-b border-border bg-background/95 backdrop-blur-2xl px-6 py-6 flex flex-col gap-4 shadow-2xl"
+            >
+              <Link 
+                href="/" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-lg font-bold uppercase tracking-wider text-foreground hover:text-primary transition-colors py-3 border-b border-zinc-800 flex items-center justify-between"
+              >
+                <span>Home</span>
+                <ArrowRight className="h-5 w-5 text-primary" />
+              </Link>
+              <Link 
+                href="/contact" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-lg font-bold uppercase tracking-wider text-foreground hover:text-primary transition-colors py-3 flex items-center justify-between"
+              >
+                <span>Contact Us</span>
+                <ArrowRight className="h-5 w-5 text-primary" />
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <section className="pt-12 md:pt-20 px-6 max-w-[1440px] mx-auto">
@@ -67,6 +101,8 @@ export default function BusinessClient() {
             alt="Person scanning a Free Drops bottle"
             fill
             className="object-cover"
+            priority
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/90 to-transparent" />
           <div className="absolute bottom-10 left-10 max-w-lg">

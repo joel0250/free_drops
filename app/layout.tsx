@@ -18,12 +18,34 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Free Drops | Free to You, Paid by Brands",
-  description: "A disruptive ad-revenue water company.",
+  metadataBase: new URL('https://joel0250.github.io/free_drops'),
+  title: {
+    default: "Free Drops | Free to You, Paid by Brands",
+    template: "%s | Free Drops"
+  },
+  description: "A disruptive ad-revenue water company. We flipped the model: premium aluminum bottles, pristine water, paid for by brands you actually want to hear from.",
+  applicationName: "Free Drops",
+  authors: [{ name: "Joel Thomas" }],
+  generator: "Next.js",
+  keywords: ["free water", "ad revenue", "sustainable water", "aluminum bottles", "brand sponsored"],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Free Drops",
     description: "Water should be free. Paid by brands you actually want to hear from.",
-    url: "https://freedrops.com",
+    url: "/",
     siteName: "Free Drops",
     locale: "en_US",
     type: "website",

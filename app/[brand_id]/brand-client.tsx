@@ -101,6 +101,8 @@ export default function BrandClient({ brandId }: BrandProps) {
               alt={`${brand.name} Collaboration Bottle`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
+              priority
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-zinc-900/90 via-zinc-900/40 to-transparent pointer-events-none" />
           </div>

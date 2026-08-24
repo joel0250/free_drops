@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Droplet, Send, Menu, CheckCircle2, AlertCircle } from "lucide-react";
+import { Droplet, Send, Menu, X, ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 type FormErrors = {
-  name?: string;
+  firstName?: string;
+  lastName?: string;
   email?: string;
   message?: string;
 };
@@ -17,9 +18,10 @@ type FormErrors = {
 export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", message: "" });
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -27,9 +29,9 @@ export default function ContactClient() {
 
   const validateField = (name: string, value: string) => {
     let error = "";
-    if (name === "name") {
-      if (!value.trim()) error = "Name is required";
-      else if (value.trim().length < 2) error = "Name must be at least 2 characters";
+    if (name === "firstName" || name === "lastName") {
+      if (!value.trim()) error = `${name === "firstName" ? "First" : "Last"} Name is required`;
+      else if (value.trim().length < 2) error = "Must be at least 2 characters";
     }
     if (name === "email") {
       if (!value.trim()) error = "Email is required";
@@ -61,13 +63,14 @@ export default function ContactClient() {
     
     // Validate all fields
     const newErrors: FormErrors = {
-      name: validateField("name", formData.name),
+      firstName: validateField("firstName", formData.firstName),
+      lastName: validateField("lastName", formData.lastName),
       email: validateField("email", formData.email),
       message: validateField("message", formData.message),
     };
     
     setErrors(newErrors);
-    setTouched({ name: true, email: true, message: true });
+    setTouched({ firstName: true, lastName: true, email: true, message: true });
 
     // Check if there are any errors
     if (Object.values(newErrors).some((err) => err)) {
@@ -96,11 +99,44 @@ export default function ContactClient() {
             <Link href="/business" aria-label="For Brands" title="Information for Brands" className="hover:text-primary transition-colors">B2B Platform</Link>
             <Link href="/contact" aria-label="Contact Us" title="Contact Us" className="text-primary font-bold">Contact</Link>
           </div>
-          {/* Mobile Menu Icon */}
-          <div className="md:hidden flex items-center">
-             <Menu className="h-6 w-6 text-foreground" />
-          </div>
+          {/* Mobile Menu Icon Button */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors focus:outline-none"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-b border-border bg-background/95 backdrop-blur-2xl px-6 py-6 flex flex-col gap-4 shadow-2xl"
+            >
+              <Link 
+                href="/" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-lg font-bold uppercase tracking-wider text-foreground hover:text-primary transition-colors py-3 border-b border-zinc-800 flex items-center justify-between"
+              >
+                <span>Home</span>
+                <ArrowRight className="h-5 w-5 text-primary" />
+              </Link>
+              <Link 
+                href="/business" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-lg font-bold uppercase tracking-wider text-foreground hover:text-primary transition-colors py-3 flex items-center justify-between"
+              >
+                <span>For Brands</span>
+                <ArrowRight className="h-5 w-5 text-primary" />
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <section className="pt-12 md:pt-20 px-6 max-w-[1440px] mx-auto flex flex-col md:flex-row gap-12 lg:gap-24 relative min-h-[80vh] items-center">
@@ -143,63 +179,74 @@ export default function ContactClient() {
                   className="flex flex-col gap-8 relative z-10"
                   noValidate
                 >
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between">
-                      <Label htmlFor="name" className={`text-sm font-mono tracking-widest uppercase ${errors.name ? 'text-red-400' : 'text-zinc-400'}`}>Full Name</Label>
-                      {errors.name && <span className="text-xs font-mono text-red-400 uppercase tracking-wider flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.name}</span>}
+                  <div className="flex flex-col md:flex-row gap-6 md:gap-4">
+                    <div className="flex-1 flex flex-col gap-2 relative group">
+                      <Input
+                        id="firstName"
+                        type="text"
+                        required
+                        placeholder=" "
+                        value={formData.firstName}
+                        onChange={(e) => handleChange("firstName", e.target.value)}
+                        onBlur={() => handleBlur("firstName")}
+                        className={`peer rounded-xl border-white/10 bg-white/5 h-14 uppercase font-mono text-white px-4 pt-4 pb-1 text-lg transition-all ${errors.firstName ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : 'focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary'}`}
+                        aria-invalid={!!errors.firstName}
+                        disabled={isSubmitting}
+                      />
+                      <Label htmlFor="firstName" className="absolute left-4 top-4 text-zinc-500 font-mono tracking-widest uppercase text-xs transition-all peer-focus:-translate-y-3 peer-focus:text-[10px] peer-focus:text-primary peer-valid:-translate-y-3 peer-valid:text-[10px] pointer-events-none">First Name</Label>
+                      {errors.firstName && <span className="text-[10px] font-mono text-red-400 uppercase tracking-wider flex items-center gap-1 absolute -bottom-5 left-1"><AlertCircle className="w-3 h-3" /> {errors.firstName}</span>}
                     </div>
-                    <Input
-                      id="name"
-                      type="text"
-                      required
-                      placeholder="ENTER YOUR NAME"
-                      value={formData.name}
-                      onChange={(e) => handleChange("name", e.target.value)}
-                      onBlur={() => handleBlur("name")}
-                      className={`rounded-xl border-white/10 bg-white/5 h-14 uppercase font-mono placeholder:text-zinc-600 focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary text-white px-4 text-lg transition-all ${errors.name ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
-                      aria-invalid={!!errors.name}
-                      aria-describedby={errors.name ? "name-error" : undefined}
-                      disabled={isSubmitting}
-                    />
+
+                    <div className="flex-1 flex flex-col gap-2 relative group">
+                      <Input
+                        id="lastName"
+                        type="text"
+                        required
+                        placeholder=" "
+                        value={formData.lastName}
+                        onChange={(e) => handleChange("lastName", e.target.value)}
+                        onBlur={() => handleBlur("lastName")}
+                        className={`peer rounded-xl border-white/10 bg-white/5 h-14 uppercase font-mono text-white px-4 pt-4 pb-1 text-lg transition-all ${errors.lastName ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : 'focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary'}`}
+                        aria-invalid={!!errors.lastName}
+                        disabled={isSubmitting}
+                      />
+                      <Label htmlFor="lastName" className="absolute left-4 top-4 text-zinc-500 font-mono tracking-widest uppercase text-xs transition-all peer-focus:-translate-y-3 peer-focus:text-[10px] peer-focus:text-primary peer-valid:-translate-y-3 peer-valid:text-[10px] pointer-events-none">Last Name</Label>
+                      {errors.lastName && <span className="text-[10px] font-mono text-red-400 uppercase tracking-wider flex items-center gap-1 absolute -bottom-5 left-1"><AlertCircle className="w-3 h-3" /> {errors.lastName}</span>}
+                    </div>
                   </div>
                   
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between">
-                      <Label htmlFor="email" className={`text-sm font-mono tracking-widest uppercase ${errors.email ? 'text-red-400' : 'text-zinc-400'}`}>Email Address</Label>
-                      {errors.email && <span className="text-xs font-mono text-red-400 uppercase tracking-wider flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.email}</span>}
-                    </div>
+                  <div className="flex flex-col gap-2 relative mt-4 md:mt-2 group">
                     <Input
                       id="email"
                       type="email"
                       required
-                      placeholder="ENTER YOUR EMAIL"
+                      placeholder=" "
                       value={formData.email}
                       onChange={(e) => handleChange("email", e.target.value)}
                       onBlur={() => handleBlur("email")}
-                      className={`rounded-xl border-white/10 bg-white/5 h-14 uppercase font-mono placeholder:text-zinc-600 focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary text-white px-4 text-lg transition-all ${errors.email ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
+                      className={`peer rounded-xl border-white/10 bg-white/5 h-14 uppercase font-mono text-white px-4 pt-4 pb-1 text-lg transition-all ${errors.email ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : 'focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary'}`}
                       aria-invalid={!!errors.email}
-                      aria-describedby={errors.email ? "email-error" : undefined}
                       disabled={isSubmitting}
                     />
+                    <Label htmlFor="email" className="absolute left-4 top-4 text-zinc-500 font-mono tracking-widest uppercase text-xs transition-all peer-focus:-translate-y-3 peer-focus:text-[10px] peer-focus:text-primary peer-valid:-translate-y-3 peer-valid:text-[10px] pointer-events-none">Email Address</Label>
+                    {errors.email && <span className="text-[10px] font-mono text-red-400 uppercase tracking-wider flex items-center gap-1 absolute -bottom-5 left-1"><AlertCircle className="w-3 h-3" /> {errors.email}</span>}
                   </div>
 
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between">
-                      <Label htmlFor="message" className={`text-sm font-mono tracking-widest uppercase ${errors.message ? 'text-red-400' : 'text-zinc-400'}`}>Message</Label>
-                      {errors.message && <span className="text-xs font-mono text-red-400 uppercase tracking-wider flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.message}</span>}
-                    </div>
+                  <div className="flex flex-col gap-2 relative mt-4 md:mt-2 group">
                     <textarea
                       id="message"
                       required
-                      placeholder="WHAT'S ON YOUR MIND?"
+                      placeholder=" "
                       value={formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
                       onBlur={() => handleBlur("message")}
-                      className={`rounded-xl border border-white/10 bg-white/5 min-h-[120px] uppercase font-mono placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary text-white px-4 text-lg resize-y pt-4 transition-all ${errors.message ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
+                      className={`peer rounded-xl border border-white/10 bg-white/5 min-h-[140px] uppercase font-mono focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:border-primary text-white px-4 pt-6 pb-2 text-lg resize-y transition-all ${errors.message ? 'border-red-400 focus-visible:border-red-400 focus-visible:ring-red-400' : ''}`}
                       aria-invalid={!!errors.message}
-                      aria-describedby={errors.message ? "message-error" : undefined}
                       disabled={isSubmitting}
                     />
+                    <Label htmlFor="message" className="absolute left-4 top-4 text-zinc-500 font-mono tracking-widest uppercase text-xs transition-all peer-focus:-translate-y-3 peer-focus:text-[10px] peer-focus:text-primary peer-valid:-translate-y-3 peer-valid:text-[10px] pointer-events-none">Message</Label>
+                    <div className="absolute -bottom-5 right-1 text-[10px] font-mono text-zinc-500 tracking-widest">{formData.message.length} / 500</div>
+                    {errors.message && <span className="text-[10px] font-mono text-red-400 uppercase tracking-wider flex items-center gap-1 absolute -bottom-5 left-1"><AlertCircle className="w-3 h-3" /> {errors.message}</span>}
                   </div>
 
                   <Button
@@ -236,7 +283,7 @@ export default function ContactClient() {
                     We&apos;ll be in touch shortly.
                   </p>
                   <Button 
-                    onClick={() => { setSubmitted(false); setFormData({name: "", email: "", message: ""}); setTouched({}); }}
+                    onClick={() => { setSubmitted(false); setFormData({firstName: "", lastName: "", email: "", message: ""}); setTouched({}); }}
                     variant="link" 
                     className="mt-8 text-zinc-400 hover:text-white font-mono tracking-widest uppercase"
                   >
