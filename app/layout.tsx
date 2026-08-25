@@ -18,7 +18,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://joel0250.github.io/free_drops'),
+  metadataBase: new URL('https://freedrops.in'),
   title: {
     default: "Free Drops | Free to You, Paid by Brands",
     template: "%s | Free Drops"

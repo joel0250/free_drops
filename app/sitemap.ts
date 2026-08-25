@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://joel0250.github.io/free_drops';
+  const baseUrl = 'https://freedrops.in';
   
   return [
     {
